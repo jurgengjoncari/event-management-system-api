@@ -1,0 +1,25 @@
+{
+  "name": "atrax",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": "24.11.1"
+  },
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "5.0.0",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^9.0.3",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.0.0",
+    "morgan": "~1.9.1",
+    "pug": "3.0.3",
+    "resend": "^6.5.2"
+  }
+}

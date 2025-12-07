@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    h1= title
+
+    form(action=action method='post')
+        // Title
+        div
+            label(for="title") Title
+        div
+            input(type="text" name="title" id="title" value=(event && event.title) placeholder="Enter event title" required)
+
+        // Description
+        div
+            label(for="description") Description
+        div
+            textarea(name="description" id="description" placeholder="Enter event description" required)= event && event.description
+
+        // Date
+        div
+            label(for="date") Date
+        div
+            input(type="date" name="date" id="date" value=(event && event.date ? event.date.toISOString().split('T')[0] : '') required)
+
+        // Location
+        div
+            label(for="location") Location
+        div
+            input(type="text" name="location" id="location" value=(event && event.location) placeholder="Enter event location" required)
+
+        // Max Attendees
+        div
+            label(for="maxAttendees") Maximum Attendees
+        div
+            input(type="number" name="maxAttendees" id="maxAttendees" value=(event && event.maxAttendees) min="1" required)
+
+        // Submit
+        div
+            button(type="submit")= submitLabel
+            button(type="submit" name="_method" value="DELETE") Delete Event

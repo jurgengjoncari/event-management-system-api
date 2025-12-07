@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    h1 Events
+
+    a(href="/events/new") Create New Event
+
+    main
+        if events.length
+            each event in events
+                article
+                    header
+                        h2
+                            a(href=`/events/${event._id}`)= event.title
+                    section
+                        time(datetime=event.date.toISOString()) #{event.date.toDateString()}
+                        address #{event.location}
+                    section
+                        label(for="attendees") Attendees:&nbsp;
+                        meter(value=event.attendees ? event.attendees.length : 0 min="0" max=event.maxAttendees)
+                        //span &nbsp;#[code #{event.attendees && event.attendees.length || 0} / #{event.maxAttendees}]
+                    details
+                        summary More Info
+                        p= event.description
+                        if event.creator
+                            p Created by: #{event.creator.fullName || event.creator.email}
+        else
+            p No events found.
+            pre
+                | Try creating one with the "Create New Event" link above.
